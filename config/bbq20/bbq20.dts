@@ -109,14 +109,23 @@ RC(2,3)          RC(2,1)             RC(3,1)             RC(4,1)          RC(6,2
     pinctrl-names = "default", "sleep";
 };
 
-
-
 &usbd {
     status = "okay";
     cdc_acm_uart: cdc_acm_uart {
         compatible = "zephyr,cdc-acm-uart";
     };
 };
+
+&bbq20_layout{
+	transform = <&default_transform>;
+	kscan = <&kscan0>;
+}; 
+
+zephyr_udc0: &usbd { 
+    compatible = "nordic,nrf-usbd"; 
+    status = "okay"; 
+};
+
 
 &flash0 {
     /*
